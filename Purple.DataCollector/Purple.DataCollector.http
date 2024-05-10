@@ -1,0 +1,6 @@
+@Purple.DataCollector_HostAddress = http://localhost:5252
+
+GET {{Purple.DataCollector_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,6 @@
+@Purple.Watchdog_HostAddress = http://localhost:5219
+
+GET {{Purple.Watchdog_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
