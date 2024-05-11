@@ -51,12 +51,13 @@ Konteinerizovana instace pobezi v Azure container apps.
 
 ## Azure Running Costs
 
-| Service        | Cost (per month) | Notes                                      |
-|----------------|------------------|--------------------------------------------|
-| DataCollector  | $XX              | [Notes about DataCollector costs.]         |
-| DataProcessor  | $XX              | [Notes about DataProcessor costs.]         |
-| Watchdog       | $XX              | [Notes about Watchdog costs.]              |
-| Total          | $XX              | [Any additional notes about total costs.]  |
-| Azure container Registry          | $XX              | [Any additional notes about total costs.]  |
-| Service bus          | $XX              | [Any additional notes about total costs.]  |
+| Service        | Cost (per month) |
+|----------------|------------------|
+| DataCollector Container App | $200 |
+| DataProcessor Container App | $200 |
+| Watchdog Container App | $200 |
+| Service bus          | $0.05 |
+| Azure database for PostgreSQL      | $127|
+| Total          | $727  |
+
 
