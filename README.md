@@ -2,7 +2,7 @@
 
 ## General Information
 
-[Add general information about your software architecture here.]
+Navrh a POC implemetnace systemu pro monitoring obchodnich aktivit.
 
 ![Screenshot 2024-05-11 at 10 38 29](https://github.com/JiriNavratildev/watchdog/assets/121182964/eb071261-e8a9-4000-a824-6cf638fc782b)
 
