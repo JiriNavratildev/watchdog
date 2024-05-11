@@ -50,3 +50,11 @@ Ceny lze snizit alokaci na 1 az 3 roky. Design aplikace neni primo vazan na tyto
 ## PoC implementation
 Jedna se o hrubou ukazku toho, jak bych jednotlive sluzby implementoval. V ramci zjednoduseni zde nepouzivam veskete good practice, ktere bych pri implementaci produkcni aplikace pouzil, napr. misto primeho pristupu do db by existovala separatni sluzba, ktere by toto zajistovala a napr. by vyuzila cacheovani.
 
+## Monitoring
+
+## Co je potreba specifikovat?
+Chceme monitorovat i limitni ordery nebo jen market?
+Jaka je casova tolerance odhaleni problemu?
+Chceme ukladat vsechna data? Nebo jen duplicitni ordery?
+Je potreba aktualizovat konfiguraci za behu?
+
