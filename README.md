@@ -1,4 +1,5 @@
 # Watchdog
+![Screenshot 2024-05-11 at 9 23 21](https://github.com/JiriNavratildev/watchdog/assets/121182964/b7a56950-08fc-4566-9258-c72c4508bf4d)
 
 ## General Information
 
