@@ -1,9 +1,10 @@
 # Watchdog
-![Screenshot 2024-05-11 at 9 23 21](https://github.com/JiriNavratildev/watchdog/assets/121182964/b7a56950-08fc-4566-9258-c72c4508bf4d)
 
 ## General Information
 
 [Add general information about your software architecture here.]
+
+![Screenshot 2024-05-11 at 10 38 29](https://github.com/JiriNavratildev/watchdog/assets/121182964/eb071261-e8a9-4000-a824-6cf638fc782b)
 
 ## Services
 
