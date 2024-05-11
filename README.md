@@ -16,12 +16,6 @@ Slouzi pro sber dat z definovanych zdroju. Pro kazdy zdroj implementuje klieta, 
 **Scaling:**  
 Jednotlive datove zdroje mohou mit vlastni instaci pro lepsi skalovani.
 
-**Testing:**  
-Tato komponenta obsahuje minimum domenove logiky, proto zde budou primarne integracni testy, aplikace pouziva abstarakce, takze externi sluzby lze namockovat. Testova se bude primarne web socket clint, propojeni, zpracovani zpravy, osetreni vypadku spojeni a spravne odpojeni.
-
-**Deployment:**  
-Konteinerizovana instace pobezi v Azure container apps.
-
 ### DataProcessor
 
 **Description:**  
@@ -29,12 +23,6 @@ Aplikace konzumuje data z DataCollectoru, krtere zpracovava a uklada do databaze
 
 **Scaling:**  
 Aplikaci podporuje horizontalni skalovani, pri nasazeni Azure container apps lze skalopat pomoci mnozstni zprav v ServiceBus fronte.
-
-**Testing:**  
-Parsovani a formalizace zprav budou pokryty unit testy. Konzumaci zprav lze testovat pomoci mock instaci.
-
-**Deployment:**  
-Konteinerizovana instace pobezi v Azure container apps.
 
 ### Watchdog
 
@@ -44,12 +32,15 @@ Aplikace konzumuje data z DataProcessoru a validuje je pomoci definovanych krite
 **Scaling:**  
 Aplikaci podporuje horizontalni skalovani, pri nasazeni Azure container apps lze skalopat pomoci mnozstni zprav v ServiceBus fronte.
 
-**Testing:**  
-Domenova logika lze testovat unit testy. 
-// Sjednotime to testovani do vlastni kategrie, nema smysl to psat zvlast, aji ten scaling i guess
+## Testing
+Kod je strukturovany tak, aby podporoval unit testovani, kod domenove logiky neobsahuje zavyslost na externi systemy. Napojeni na externi systemy a infrastrukturu je vzdy pres interface, obsahujici nase obsatrakce, takze vse lze namockovat.
 
-**Deployment:**  
-Konteinerizovana instace pobezi v Azure container apps.
+## Scaling
+Sluzby jsou bezstavove a podporuji horizontalni skalovani.
+
+## Deployment
+Aplikacni sluzby budou kontejenerizovany v ramci CI/CD pipeline a image budou ulozeni v repozitari, napr. Azure Container Repository. Odtud je lze nasadit a prenasadit do Azure Container App. Aplikaci lze provozovat i na VM nebo napr. Azure App Service. Azure Container App volim z duvodu jednoduche konfigurace a provozu, ktera ale prichazi s vyssimy naklady.
+Jako databazi jsem zvolil Postgre, jako nejvyspelejsi open source databazi. V Azuru lze pouzit sluzbu Azure Database for PostgreSQL.
 
 ## Azure Running Costs
 
@@ -63,4 +54,7 @@ Konteinerizovana instace pobezi v Azure container apps.
 | Total          | $727.05  |
 
 Ceny lze snizit alokaci na 1 az 3 roky. Design aplikace neni primo vazan na tyto sluzby. Ceny dle drasticky snizit primim pouzi virtualniho storoje to vsak pouzaduje slozitejsi konfigurace a spravu.
+
+## PoC implementation
+Jedna se o hrubou ukazku toho, jak bych jednotlive sluzby implementoval. V ramci zjednoduseni zde nepouzivam veskete good practice, ktere bych pri implementaci produkcni aplikace pouzil, napr. misto primeho pristupu do db by existovala separatni sluzba, ktere by toto zajistovala a napr. by vyuzila cacheovani.
 
