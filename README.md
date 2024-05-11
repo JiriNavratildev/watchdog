@@ -33,7 +33,7 @@ Aplikace konzumuje data z DataProcessoru a validuje je pomoci definovanych krite
 Aplikaci podporuje horizontalni skalovani, pri nasazeni Azure container apps lze skalopat pomoci mnozstni zprav v ServiceBus fronte.
 
 ## Testing
-Kod je strukturovany tak, aby podporoval unit testovani, kod domenove logiky neobsahuje zavyslost na externi systemy. Napojeni na externi systemy a infrastrukturu je vzdy pres interface, obsahujici nase obsatrakce, takze vse lze namockovat.
+Kod je strukturovany tak, aby podporoval testovani, kod domenove logiky neobsahuje zavyslost na externi systemy. Napojeni na externi systemy a infrastrukturu je vzdy pres interface, obsahujici nase obsatrakce, takze vse lze namockovat. Unit testy se zameri napr. vypocty hodnot a transformaci dat. Itegracni testy budou overovat spravnou inicializace WS klienta, jeho obnoveni v pripade vypadku a zpravne odpojeni.
 
 ## Scaling
 Sluzby jsou bezstavove a podporuji horizontalni skalovani.
