@@ -34,6 +34,9 @@ Aplikacni sluzby budou kontejenerizovany v ramci CI/CD pipeline a image budou ul
 Jako databazi jsem zvolil Postgre, jako nejvyspelejsi open source databazi. V Azuru lze pouzit sluzbu Azure Database for PostgreSQL.
 Pro asynchroni komunikaci se pouziva message broker Azure Service Bus. 
 
+## Model
+![Screenshot 2024-05-11 at 17 11 04](https://github.com/JiriNavratildev/watchdog/assets/121182964/0d0600f3-ced3-4b88-8f8f-93e390ff0e7c)
+
 ## Azure Running Costs
 
 | Service        | Cost (per month) |
