@@ -10,35 +10,43 @@
 ### DataCollector
 
 **Description:**  
-[Description of the DataCollector service.]
+Slouzi pro sber dat z definovanych zdroju. Pro kazdy zdroj implementuje klieta, ktery aktivne sbira data a service bus fronty pro dalsi spracovani.
 
 **Scaling:**  
-[Information about how the DataCollector service can be scaled.]
+Jednotlive datove zdroje mohou mit vlastni instaci pro lepsi skalovani.
 
 **Testing:**  
 [Details about testing procedures for the DataCollector service.]
 
+**Deployment:**  
+Konteinerizovana instace pobezi v Azure container apps.
+
 ### DataProcessor
 
 **Description:**  
-[Description of the DataProcessor service.]
+Aplikace konzumuje data z DataCollectoru, krtere formalizuje a aklada do databaze.
 
 **Scaling:**  
-[Information about how the DataProcessor service can be scaled.]
+Aplikaci podporuje horizontalni skalovani, pri nasazeni Azure container apps lze skalopat pomoci mnozstni zprav v ServiceBus fronte.
 
 **Testing:**  
-[Details about testing procedures for the DataProcessor service.]
+
+**Deployment:**  
+Konteinerizovana instace pobezi v Azure container apps.
 
 ### Watchdog
 
 **Description:**  
-[Description of the Watchdog service.]
+Aplikace konzumuje data z DataProcessoru a validuje je pomoci definovanych kriterii.
 
 **Scaling:**  
-[Information about how the Watchdog service can be scaled.]
+Aplikaci podporuje horizontalni skalovani, pri nasazeni Azure container apps lze skalopat pomoci mnozstni zprav v ServiceBus fronte.
 
 **Testing:**  
 [Details about testing procedures for the Watchdog service.]
+
+**Deployment:**  
+Konteinerizovana instace pobezi v Azure container apps.
 
 ## Azure Running Costs
 
@@ -48,3 +56,6 @@
 | DataProcessor  | $XX              | [Notes about DataProcessor costs.]         |
 | Watchdog       | $XX              | [Notes about Watchdog costs.]              |
 | Total          | $XX              | [Any additional notes about total costs.]  |
+| Azure container Registry          | $XX              | [Any additional notes about total costs.]  |
+| Service bus          | $XX              | [Any additional notes about total costs.]  |
+
