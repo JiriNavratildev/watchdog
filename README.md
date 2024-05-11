@@ -17,7 +17,7 @@ Slouzi pro sber dat z definovanych zdroju. Pro kazdy zdroj implementuje klieta, 
 Jednotlive datove zdroje mohou mit vlastni instaci pro lepsi skalovani.
 
 **Testing:**  
-[Details about testing procedures for the DataCollector service.]
+Tato komponenta obsahuje minimum domenove logiky, proto zde budou primarne integracni testy, aplikace pouziva abstarakce, takze externi sluzby lze namockovat. Testova se bude primarne web socket clint, propojeni, zpracovani zpravy, osetreni vypadku spojeni a spravne odpojeni.
 
 **Deployment:**  
 Konteinerizovana instace pobezi v Azure container apps.
@@ -25,12 +25,13 @@ Konteinerizovana instace pobezi v Azure container apps.
 ### DataProcessor
 
 **Description:**  
-Aplikace konzumuje data z DataCollectoru, krtere formalizuje a aklada do databaze.
+Aplikace konzumuje data z DataCollectoru, krtere formalizuje a uklada do databaze.
 
 **Scaling:**  
 Aplikaci podporuje horizontalni skalovani, pri nasazeni Azure container apps lze skalopat pomoci mnozstni zprav v ServiceBus fronte.
 
 **Testing:**  
+Parsovani a formalizace zprav budou pokryty unit testy. Konzumaci zprav lze testovat pomoci mock instaci.
 
 **Deployment:**  
 Konteinerizovana instace pobezi v Azure container apps.
@@ -44,7 +45,8 @@ Aplikace konzumuje data z DataProcessoru a validuje je pomoci definovanych krite
 Aplikaci podporuje horizontalni skalovani, pri nasazeni Azure container apps lze skalopat pomoci mnozstni zprav v ServiceBus fronte.
 
 **Testing:**  
-[Details about testing procedures for the Watchdog service.]
+Domenova logika lze testovat unit testy. 
+// Sjednotime to testovani do vlastni kategrie, nema smysl to psat zvlast
 
 **Deployment:**  
 Konteinerizovana instace pobezi v Azure container apps.
