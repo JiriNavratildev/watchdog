@@ -58,6 +58,7 @@ Konteinerizovana instace pobezi v Azure container apps.
 | Watchdog Container App | $200 |
 | Service bus          | $0.05 |
 | Azure database for PostgreSQL      | $127|
-| Total          | $727  |
+| Total          | $727.05  |
 
+Ceny lze snizit alokaci na 1 az 3 roky. Design aplikace neni primo vazan na tyto sluzby. Ceny dle drasticky snizit primim pouzi virtualniho storoje to vsak pouzaduje slozitejsi konfigurace a spravu.
 
