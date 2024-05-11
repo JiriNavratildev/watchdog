@@ -25,7 +25,7 @@ Konteinerizovana instace pobezi v Azure container apps.
 ### DataProcessor
 
 **Description:**  
-Aplikace konzumuje data z DataCollectoru, krtere formalizuje a uklada do databaze.
+Aplikace konzumuje data z DataCollectoru, krtere zpracovava a uklada do databaze. Aplikace data formalizuje, tak aby ostatni systemy pracovali s jednotnym modelem. Data jsou formovany potrebam ostatnich systemu tak, abych se vyhnuly slozitejsim dotazum do databaze.
 
 **Scaling:**  
 Aplikaci podporuje horizontalni skalovani, pri nasazeni Azure container apps lze skalopat pomoci mnozstni zprav v ServiceBus fronte.
@@ -46,7 +46,7 @@ Aplikaci podporuje horizontalni skalovani, pri nasazeni Azure container apps lze
 
 **Testing:**  
 Domenova logika lze testovat unit testy. 
-// Sjednotime to testovani do vlastni kategrie, nema smysl to psat zvlast
+// Sjednotime to testovani do vlastni kategrie, nema smysl to psat zvlast, aji ten scaling i guess
 
 **Deployment:**  
 Konteinerizovana instace pobezi v Azure container apps.
