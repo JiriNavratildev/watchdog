@@ -46,6 +46,7 @@ Pro asynchroni komunikaci se pouziva message broker Azure Service Bus.
 | Watchdog Container App | $200 |
 | Service bus          | $0.05 |
 | Azure database for PostgreSQL      | $127|
+| Application Insights      | $0|
 | Total          | $727.05  |
 
 Ceny lze snizit alokaci na 1 az 3 roky. Design aplikace neni primo vazan na tyto sluzby. Ceny dle drasticky snizit primim pouzi virtualniho storoje to vsak pouzaduje slozitejsi konfigurace a spravu.
@@ -54,6 +55,7 @@ Ceny lze snizit alokaci na 1 az 3 roky. Design aplikace neni primo vazan na tyto
 Jedna se o hrubou ukazku toho, jak bych jednotlive sluzby implementoval. V ramci zjednoduseni zde nepouzivam veskete good practice, ktere bych pri implementaci produkcni aplikace pouzil, napr. misto primeho pristupu do db by existovala separatni sluzba, ktere by toto zajistovala a napr. by vyuzila cacheovani.
 
 ## Monitoring
+Pomoci Application Insights budeme monitorovat metriky CPU a GPU vsech instaci a databaze, applikacni logiky a errory.
 
 ## Co je potreba specifikovat?
 Chceme monitorovat i limitni ordery nebo jen market?
