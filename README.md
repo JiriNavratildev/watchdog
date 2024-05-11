@@ -11,36 +11,28 @@ Navrh a POC implemetnace systemu pro monitoring obchodnich aktivit. Aplikace je 
 ### DataCollector
 
 **Description:**  
-Slouzi pro sber dat z definovanych zdroju. Pro kazdy zdroj implementuje klieta, ktery aktivne sbira data a service bus fronty pro dalsi spracovani.
-
-**Scaling:**  
-Jednotlive datove zdroje mohou mit vlastni instaci pro lepsi skalovani.
+Slouzi pro sber dat z definovanych zdroju. Pro kazdy zdroj implementuje klieta, ktery aktivne sbira data. Aplikace pro kazdy server v konfiguraci vytvori background job, ktery otevre web socket pripojeni a zaregisttuje se pro prijem aktualizaci portfolia (vytvoreni objednavky) a pro aktualizaci uzivatelskeho konta (data pro vypocet balance to volumen ration). Aplikace data pouze prijima a posila je da Azure Service Bus pro dalsi zpracovani.
 
 ### DataProcessor
 
 **Description:**  
-Aplikace konzumuje data z DataCollectoru, krtere zpracovava a uklada do databaze. Aplikace data formalizuje, tak aby ostatni systemy pracovali s jednotnym modelem. Data jsou formovany potrebam ostatnich systemu tak, abych se vyhnuly slozitejsim dotazum do databaze.
-
-**Scaling:**  
-Aplikaci podporuje horizontalni skalovani, pri nasazeni Azure container apps lze skalopat pomoci mnozstni zprav v ServiceBus fronte.
+Aplikace konzumuje data z DataCollectoru, krtere zpracovava a uklada do databaze. Aplikace data formalizuje, tak aby ostatni systemy pracovali s jednotnym modelem. Data jsou formovany potrebam ostatnich systemu tak, abych se vyhnuly slozitejsim dotazum do databaze. Pri startu aplikace se sputi background joby pro jednotlive fronty, ktere postupne zacnou zpracovavat. Zpracovana data se ulozi do db a poslou se do service busu pro dalsi zpracovani.
 
 ### Watchdog
 
 **Description:**  
 Aplikace konzumuje data z DataProcessoru a validuje je pomoci definovanych kriterii.
 
-**Scaling:**  
-Aplikaci podporuje horizontalni skalovani, pri nasazeni Azure container apps lze skalopat pomoci mnozstni zprav v ServiceBus fronte.
-
 ## Testing
 Kod je strukturovany tak, aby podporoval testovani, kod domenove logiky neobsahuje zavyslost na externi systemy. Napojeni na externi systemy a infrastrukturu je vzdy pres interface, obsahujici nase obsatrakce, takze vse lze namockovat. Unit testy se zameri napr. vypocty hodnot a transformaci dat. Itegracni testy budou overovat spravnou inicializace WS klienta, jeho obnoveni v pripade vypadku a zpravne odpojeni.
 
 ## Scaling
-Sluzby jsou bezstavove a podporuji horizontalni skalovani.
+Sluzby jsou bezstavove a podporuji horizontalni skalovani. Pri nasazeni Azure container apps lze skalopat pomoci mnozstni zprav v Azure Service Bus fronte.
 
 ## Deployment
 Aplikacni sluzby budou kontejenerizovany v ramci CI/CD pipeline a image budou ulozeni v repozitari, napr. Azure Container Repository. Odtud je lze nasadit a prenasadit do Azure Container App. Aplikaci lze provozovat i na VM nebo napr. Azure App Service. Azure Container App volim z duvodu jednoduche konfigurace a provozu, ktera ale prichazi s vyssimy naklady.
 Jako databazi jsem zvolil Postgre, jako nejvyspelejsi open source databazi. V Azuru lze pouzit sluzbu Azure Database for PostgreSQL.
+Pro asynchroni komunikaci se pouziva message broker Azure Service Bus. 
 
 ## Azure Running Costs
 
