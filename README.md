@@ -2,7 +2,7 @@
 
 ## General Information
 
-Navrh a POC implemetnace systemu pro monitoring obchodnich aktivit. Aplikace je rozdelana do tri samostanychc sluzeb, bezi v Azuru.
+Design and POC implementation of a trading activity monitoring system.
 
 ![Screenshot 2024-05-11 at 10 38 29](https://github.com/JiriNavratildev/watchdog/assets/121182964/eb071261-e8a9-4000-a824-6cf638fc782b)
 
@@ -21,14 +21,13 @@ Consumes data from the DataCollector, processes it, and stores it in the databas
 ### Watchdog
 
 **Description:**  
-Aplikace konzumuje data z DataProcessoru a validuje je pomoci definovanych kriterii.
-Kazdy novy deal je validovan oproti existujicim v databazi.
+Consumes data from the DataProcessor and validates it against predefined criteria. It compares each new deal with existing ones in the database, triggering notifications upon finding a match.
 
 ## Testing
 Kod je strukturovany tak, aby podporoval testovani, kod domenove logiky neobsahuje zavyslost na externi systemy. Napojeni na externi systemy a infrastrukturu je vzdy pres interface, obsahujici nase obsatrakce, takze vse lze namockovat. Unit testy se zameri napr. vypocty hodnot a transformaci dat. Itegracni testy budou overovat spravnou inicializace WS klienta, jeho obnoveni v pripade vypadku a zpravne odpojeni.
 
 ## Scaling
-Sluzby jsou bezstavove a podporuji horizontalni skalovani. Pri nasazeni Azure container apps lze skalopat pomoci mnozstni zprav v Azure Service Bus fronte.
+Services are stateless and support horizontal scaling. Azure container apps can scale up or down based on message count in the Azure Service Bus queue.
 
 ## Deployment
 Aplikacni sluzby budou kontejenerizovany v ramci CI/CD pipeline a image budou ulozeni v repozitari, napr. Azure Container Repository. Odtud je lze nasadit a prenasadit do Azure Container App. Aplikaci lze provozovat i na VM nebo napr. Azure App Service. Azure Container App volim z duvodu jednoduche konfigurace a provozu, ktera ale prichazi s vyssimy naklady.
