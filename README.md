@@ -33,7 +33,7 @@ Services are stateless and support horizontal scaling. Azure container apps can 
 Application services will be containerized in the CI/CD pipeline and deployed to Azure Container App or other options like VMs or Azure App Service. Postgre is selected as the database, leveraging Azure Database for PostgreSQL service. The Azure Service Bus is used for asynchronous communication.
 
 ## Model
-![Screenshot 2024-05-11 at 17 11 04](https://github.com/JiriNavratildev/watchdog/assets/121182964/0d0600f3-ced3-4b88-8f8f-93e390ff0e7c)
+![Screenshot 2024-05-12 at 19 29 59](https://github.com/JiriNavratildev/watchdog/assets/121182964/0e8de203-d0ab-44d5-a68c-ede8e09117e0)
 
 ## Azure Running Costs
 
