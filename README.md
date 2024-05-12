@@ -47,13 +47,13 @@ Application services will be containerized in the CI/CD pipeline and deployed to
 | Application Insights      | $0|
 | Total          | $727.05  |
 
-Ceny lze snizit alokaci na 1 az 3 roky. Design aplikace neni primo vazan na tyto sluzby. Ceny dle drasticky snizit primim pouzi virtualniho storoje to vsak pouzaduje slozitejsi konfigurace a spravu.
+Prices can be reduced by opting for 1 to 3-year allocations. The application design is independent of these services. Considerable cost savings can be achieved by utilizing virtual machines, though this will require more complex setup and maintenance.
 
 ## PoC implementation
-Jedna se o hrubou ukazku toho, jak bych jednotlive sluzby implementoval. V ramci zjednoduseni zde nepouzivam veskete good practice, ktere bych pri implementaci produkcni aplikace pouzil, napr. misto primeho pristupu do db by existovala separatni sluzba, ktere by toto zajistovala a napr. by vyuzila cacheovani.
+This is a basic demonstration of how I would implement individual services. For simplicity, I've omitted certain best practices typically employed in production applications. For instance, instead of direct database access, a separate service would handle this, possibly incorporating caching mechanisms.
 
 ## Monitoring
-Pomoci Application Insights budeme monitorovat metriky CPU a GPU vsech instaci a databaze. Dale applikacni logy a errory.
+Application Insights will be used to monitor CPU and GPU metrics across all installations and the database, as well as to track application logs and requests.
 
 ## Co je potreba specifikovat?
 - Chceme monitorovat i limitni ordery nebo jen market?
