@@ -62,4 +62,5 @@ Chceme monitorovat i limitni ordery nebo jen market?
 Jaka je casova tolerance odhaleni problemu?
 Chceme ukladat vsechna data? Nebo jen duplicitni ordery?
 Je potreba aktualizovat konfiguraci za behu?
+Jakym zpusobem bude probihat notifikace?
 
