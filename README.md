@@ -58,9 +58,9 @@ Jedna se o hrubou ukazku toho, jak bych jednotlive sluzby implementoval. V ramci
 Pomoci Application Insights budeme monitorovat metriky CPU a GPU vsech instaci a databaze. Dale applikacni logy a errory.
 
 ## Co je potreba specifikovat?
-Chceme monitorovat i limitni ordery nebo jen market?
-Jaka je casova tolerance odhaleni problemu?
-Chceme ukladat vsechna data? Nebo jen duplicitni ordery?
-Je potreba aktualizovat konfiguraci za behu?
-Jakym zpusobem bude probihat notifikace?
+- Chceme monitorovat i limitni ordery nebo jen market?
+- Jaka je casova tolerance odhaleni problemu?
+- Chceme ukladat vsechna data? Nebo jen duplicitni ordery?
+- Je potreba aktualizovat konfiguraci za behu?
+- Jakym zpusobem bude probihat notifikace?
 
