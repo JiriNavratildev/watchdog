@@ -11,17 +11,18 @@ Navrh a POC implemetnace systemu pro monitoring obchodnich aktivit. Aplikace je 
 ### DataCollector
 
 **Description:**  
-Slouzi pro sber dat z definovanych zdroju. Pro kazdy zdroj implementuje klieta, ktery aktivne sbira data. Aplikace pro kazdy server v konfiguraci vytvori background job, ktery otevre web socket pripojeni a zaregisttuje se pro prijem aktualizaci portfolia (vytvoreni objednavky) a pro aktualizaci uzivatelskeho konta (data pro vypocet balance to volumen ration). Aplikace data pouze prijima a posila je da Azure Service Bus pro dalsi zpracovani.
+Gathers data from specified sources, implementing clients for each and establishing web socket connections for real-time updates. In the DxTrade add-on, it receives portfolio and user account updates, forwarding data to Azure Service Bus for processing. Its extensibility allows for easy integration of additional data sources, ensuring adaptability to evolving needs.
 
 ### DataProcessor
 
 **Description:**  
-Aplikace konzumuje data z DataCollectoru, krtere zpracovava a uklada do databaze. Aplikace data formalizuje, tak aby ostatni systemy pracovali s jednotnym modelem. Data jsou formovany potrebam ostatnich systemu tak, abych se vyhnuly slozitejsim dotazum do databaze. Pri startu aplikace se sputi background joby pro jednotlive fronty, ktere postupne zacnou zpracovavat. Zpracovana data se ulozi do db a poslou se do service busu pro dalsi zpracovani.
+Consumes data from the DataCollector, processes it, and stores it in the database. It standardizes the data to ensure compatibility with other systems, reducing the need for complex database queries. Upon application startup, background jobs initiate processing for individual queues. Processed data is then stored in the database and transmitted to the service bus for additional processing.
 
 ### Watchdog
 
 **Description:**  
 Aplikace konzumuje data z DataProcessoru a validuje je pomoci definovanych kriterii.
+Kazdy novy deal je validovan oproti existujicim v databazi.
 
 ## Testing
 Kod je strukturovany tak, aby podporoval testovani, kod domenove logiky neobsahuje zavyslost na externi systemy. Napojeni na externi systemy a infrastrukturu je vzdy pres interface, obsahujici nase obsatrakce, takze vse lze namockovat. Unit testy se zameri napr. vypocty hodnot a transformaci dat. Itegracni testy budou overovat spravnou inicializace WS klienta, jeho obnoveni v pripade vypadku a zpravne odpojeni.
