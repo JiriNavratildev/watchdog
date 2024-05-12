@@ -7,20 +7,20 @@ namespace Purple.Watchdog;
 
 public class WatchdogService(AppDbContext dbContext, ISimilarDealsMonitor similarDealsMonitor, WatchdogConfiguration configuration, ISimilarDealRepository similarDealRepository, MockNotifier mockNotifier) : IWatchdogService
 {
-    public async Task ValidateOrder(Order order)
+    public async Task ValidateOrder(Deal deal)
     {
-        var similarDeals = await similarDealsMonitor.GetSimilarDealsAsync(order,
+        var similarDeals = await similarDealsMonitor.GetSimilarDealsAsync(deal,
             TimeSpan.FromMilliseconds(configuration.TimeIntervalInMs), configuration.VolumeToBalanceRation);
 
         foreach (var similarTo in similarDeals)
         {
             var similarDeal = new SimilarDeal
             {
-                Order = order,
+                Deal = deal,
                 SimilarTo = similarTo
             };
 
-            await mockNotifier.NotifyAsync(order, similarTo);
+            await mockNotifier.NotifyAsync(deal, similarTo);
             similarDealRepository.Add(similarDeal);
         }
 

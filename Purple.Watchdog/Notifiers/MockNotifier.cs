@@ -4,9 +4,9 @@ namespace Purple.Watchdog.Notifiers;
 
 public class MockNotifier
 {
-    public Task NotifyAsync(Order order, Order similarTo)
+    public Task NotifyAsync(Deal deal, Deal similarTo)
     {
-        Console.WriteLine($"Order #{order.Id} is similar to #{similarTo.Id}");
+        Console.WriteLine($"Order #{deal.Id} is similar to #{similarTo.Id}");
         return Task.CompletedTask;
     }
 }

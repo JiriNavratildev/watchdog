@@ -6,11 +6,11 @@ namespace Purple.Watchdog.Monitors;
 
 public class SimilarDealsMonitor(IOrderRepository orderRepository) : ISimilarDealsMonitor
 {
-    public async Task<IEnumerable<Order>> GetSimilarDealsAsync(Order order, TimeSpan interval, decimal volumeToBalanceRatio)
+    public async Task<IEnumerable<Deal>> GetSimilarDealsAsync(Deal deal, TimeSpan interval, decimal volumeToBalanceRatio)
     {
-        var time = order.Time - interval;
+        var time = deal.Time - interval;
         var similarOrders = await orderRepository.GetAll()
-            .Where(x => x.Ticker == order.Ticker && x.Time >= time && x.Time >= order.Time && x.VolumeToBalanceRatio <= volumeToBalanceRatio)
+            .Where(x => x.Ticker == deal.Ticker && x.Time >= time && x.Time >= deal.Time && x.VolumeToBalanceRatio <= volumeToBalanceRatio)
             .ToListAsync();
         
         return similarOrders;

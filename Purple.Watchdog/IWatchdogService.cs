@@ -4,5 +4,5 @@ namespace Purple.Watchdog;
 
 public interface IWatchdogService
 {
-    Task ValidateOrder(Order order);
+    Task ValidateOrder(Deal deal);
 }

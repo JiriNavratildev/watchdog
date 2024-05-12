@@ -1,8 +1,8 @@
 using Azure.Messaging.ServiceBus;
 
-namespace Purple.Watchdog.Orders;
+namespace Purple.Watchdog.Deals;
 
-public class OrderProcessor(IWatchdogService watchdogService, ServiceBusClient client) : BackgroundService
+public class DealProcessor(IWatchdogService watchdogService, ServiceBusClient client) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {

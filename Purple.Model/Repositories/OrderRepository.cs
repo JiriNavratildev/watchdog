@@ -2,7 +2,7 @@ namespace Purple.Model.Repositories;
 
 public class OrderRepository : IOrderRepository
 {
-    public IQueryable<Order> GetAll()
+    public IQueryable<Deal> GetAll()
     {
         throw new NotImplementedException();
     }
