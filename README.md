@@ -55,10 +55,8 @@ This is a basic demonstration of how I would implement individual services. For 
 ## Monitoring
 Application Insights will be used to monitor CPU and GPU metrics across all installations and the database, as well as to track application logs and requests.
 
-## Co je potreba specifikovat?
-- Chceme monitorovat i limitni ordery nebo jen market?
-- Jaka je casova tolerance odhaleni problemu?
-- Chceme ukladat vsechna data? Nebo jen duplicitni ordery?
-- Je potreba aktualizovat konfiguraci za behu?
-- Jakym zpusobem bude probihat notifikace?
+## What yet needs to be clarified?
+- Do we need to monitor limit orders or just market?
+- What is the time tolerance for toxic user detection?
+- What will be the notification process?
 
