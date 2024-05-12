@@ -24,15 +24,13 @@ Consumes data from the DataCollector, processes it, and stores it in the databas
 Consumes data from the DataProcessor and validates it against predefined criteria. It compares each new deal with existing ones in the database, triggering notifications upon finding a match.
 
 ## Testing
-Kod je strukturovany tak, aby podporoval testovani, kod domenove logiky neobsahuje zavyslost na externi systemy. Napojeni na externi systemy a infrastrukturu je vzdy pres interface, obsahujici nase obsatrakce, takze vse lze namockovat. Unit testy se zameri napr. vypocty hodnot a transformaci dat. Itegracni testy budou overovat spravnou inicializace WS klienta, jeho obnoveni v pripade vypadku a zpravne odpojeni.
+The code is designed for testing with a focus on isolating domain logic from external dependencies. All interactions with external systems and infrastructure occur through interfaces, allowing for easy mocking. Unit tests primarily cover value calculations and data transformations, while integration tests validate proper initialization, recovery, and disconnection of the WebSocket client.
 
 ## Scaling
 Services are stateless and support horizontal scaling. Azure container apps can scale up or down based on message count in the Azure Service Bus queue.
 
 ## Deployment
-Aplikacni sluzby budou kontejenerizovany v ramci CI/CD pipeline a image budou ulozeni v repozitari, napr. Azure Container Repository. Odtud je lze nasadit a prenasadit do Azure Container App. Aplikaci lze provozovat i na VM nebo napr. Azure App Service. Azure Container App volim z duvodu jednoduche konfigurace a provozu, ktera ale prichazi s vyssimy naklady.
-Jako databazi jsem zvolil Postgre, jako nejvyspelejsi open source databazi. V Azuru lze pouzit sluzbu Azure Database for PostgreSQL.
-Pro asynchroni komunikaci se pouziva message broker Azure Service Bus. 
+Application services will be containerized in the CI/CD pipeline and deployed to Azure Container App or other options like VMs or Azure App Service. Postgre is selected as the database, leveraging Azure Database for PostgreSQL service. The Azure Service Bus is used for asynchronous communication.
 
 ## Model
 ![Screenshot 2024-05-11 at 17 11 04](https://github.com/JiriNavratildev/watchdog/assets/121182964/0d0600f3-ced3-4b88-8f8f-93e390ff0e7c)
