@@ -20,10 +20,9 @@ public class DxTradeClientBackgroundTask(DxTradeClient dxTradeClient, ServiceBus
 
     private void CreateSender()
     {
-        sender = client.CreateSender("");
+        sender = client.CreateSender("dxtradeordercreated");
     }
     
-    // TODO: Move into own project? or class?
     private async Task PublishAsync(string @event)
     {
         var body = JsonSerializer.SerializeToUtf8Bytes(@event, @event.GetType());
@@ -32,7 +31,7 @@ public class DxTradeClientBackgroundTask(DxTradeClient dxTradeClient, ServiceBus
         {
             MessageId = Guid.NewGuid().ToString(),
             Body = new BinaryData(body),
-            Subject = "",
+            Subject = "dxtradeordercreated",
         };
         
         await sender.SendMessageAsync(message);

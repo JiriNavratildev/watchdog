@@ -90,7 +90,7 @@ public class DxTradeClient
         while (true)
         {
             Thread.Sleep(2000);
-            OnMessageReceived?.Invoke(this, message); // Raise the event
+            OnMessageReceived?.Invoke(this, message);
         }
     }
 }

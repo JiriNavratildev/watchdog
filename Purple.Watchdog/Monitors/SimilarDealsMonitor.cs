@@ -8,9 +8,12 @@ public class SimilarDealsMonitor(IOrderRepository orderRepository) : ISimilarDea
 {
     public async Task<IEnumerable<Deal>> GetSimilarDealsAsync(Deal deal, TimeSpan interval, decimal volumeToBalanceRatio)
     {
-        var time = deal.Time - interval;
+        var beginInterval = deal.Time - interval;
         var similarOrders = await orderRepository.GetAll()
-            .Where(x => x.Ticker == deal.Ticker && x.Time >= time && x.Time >= deal.Time && x.VolumeToBalanceRatio <= volumeToBalanceRatio)
+            .Where(x => x.Ticker == deal.Ticker 
+                        && x.Time >= beginInterval 
+                        && x.Time <= deal.Time
+                        && x.VolumeToBalanceRatio <= volumeToBalanceRatio)
             .ToListAsync();
         
         return similarOrders;

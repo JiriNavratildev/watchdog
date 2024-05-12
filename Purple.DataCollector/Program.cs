@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton(_ => new ServiceBusClient(builder.Configuration.GetConnectionString("ServiceBus"), new ServiceBusClientOptions { TransportType = ServiceBusTransportType.AmqpWebSockets }));
 
 var dxTradeServers = builder.Configuration.GetSection("DxTradeServers").Get<string[]>() ?? [];
 foreach (var dxTradeServer in dxTradeServers)
@@ -19,7 +20,5 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-app.UseHttpsRedirection();
 
 app.Run();

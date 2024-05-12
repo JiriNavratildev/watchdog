@@ -1,8 +1,10 @@
+using System.Text.Json;
 using Azure.Messaging.ServiceBus;
+using Purple.Model;
 
 namespace Purple.Watchdog.Deals;
 
-public class DealProcessor(IWatchdogService watchdogService, ServiceBusClient client) : BackgroundService
+public class DealProcessor(IServiceProvider provider, ServiceBusClient client) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
@@ -17,15 +19,17 @@ public class DealProcessor(IWatchdogService watchdogService, ServiceBusClient cl
     
     private ServiceBusProcessor CreateProcessor()
     {
-        const string topicName = ""; 
-        const string subscriptionClientName = "";
+        const string queueName = "dealcreated"; 
         
-        return client.CreateProcessor(topicName, subscriptionClientName,
+        return client.CreateProcessor(queueName,
             new ServiceBusProcessorOptions { AutoCompleteMessages = false });
     }
 
     private async Task OnMessageReceived(ProcessMessageEventArgs eventArgs)
     {
-        
+        var scope = provider.CreateScope();
+        var watchdogService = scope.ServiceProvider.GetRequiredService<IWatchdogService>();
+        var deal = JsonSerializer.Deserialize<Deal>(eventArgs.Message.Body.ToString());
+        await watchdogService.ValidateOrderAsync(deal!);
     }
 }

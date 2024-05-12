@@ -5,9 +5,9 @@ using Purple.Watchdog.Notifiers;
 
 namespace Purple.Watchdog;
 
-public class WatchdogService(AppDbContext dbContext, ISimilarDealsMonitor similarDealsMonitor, WatchdogConfiguration configuration, ISimilarDealRepository similarDealRepository, MockNotifier mockNotifier) : IWatchdogService
+public class WatchdogService(AppDbContext dbContext, ISimilarDealsMonitor similarDealsMonitor, SimilarDealConfiguration configuration, ISimilarDealRepository similarDealRepository, MockNotifier mockNotifier) : IWatchdogService
 {
-    public async Task ValidateOrder(Deal deal)
+    public async Task ValidateOrderAsync(Deal deal)
     {
         var similarDeals = await similarDealsMonitor.GetSimilarDealsAsync(deal,
             TimeSpan.FromMilliseconds(configuration.TimeIntervalInMs), configuration.VolumeToBalanceRation);

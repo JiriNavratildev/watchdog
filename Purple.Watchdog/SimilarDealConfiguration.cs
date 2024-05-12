@@ -1,6 +1,6 @@
 namespace Purple.Watchdog;
 
-public class WatchdogConfiguration
+public class SimilarDealConfiguration
 {
     public decimal VolumeToBalanceRation { get; set; }
     public int TimeIntervalInMs { get; set; }
