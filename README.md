@@ -53,7 +53,7 @@ Prices can be reduced by opting for 1 to 3-year allocations. The application des
 This is a basic demonstration of how I would implement individual services. For simplicity, I've omitted certain best practices typically employed in production applications. For instance, instead of direct database access, a separate service would handle this, possibly incorporating caching mechanisms.
 
 ## Monitoring
-Application Insights will be used to monitor CPU and GPU metrics across all installations and the database, as well as to track application logs and requests.
+Application Insights will be used to monitor CPU and memory metrics across all installations and the database, as well as to track application logs and requests.
 
 ## What yet needs to be clarified?
 - Do we need to monitor limit orders or just market?
